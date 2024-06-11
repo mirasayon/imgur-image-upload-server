@@ -2,6 +2,6 @@
 
 For .jpg, .png, .gif images
 
-## Homepage: [https://github.com/mirasayon/imgur-upload-server](https://github.com/mirasayon/imgur-upload-server)
+## Homepage: <https://github.com/mirasayon/imgur-image-upload-server>
 
 2024.06.11

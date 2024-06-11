@@ -5,10 +5,6 @@
 	"description": "Simple Node.js server to upload images to https://imgur.com",
 	"type": "module",
 	"main": "./build/app.js",
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/mirasayon/imgur-upload-server.git"
-	},
 	"scripts": {
 		"build": "npx tsc -p ./tsconfig.json",
 		"typedev": "npx tsc --watch -p ./tsconfig.json",
@@ -20,7 +16,7 @@
 		"upload",
 		"images"
 	],
-	"license": "ISC",
+	"license": "MIT",
 	"dependencies": {
 		"commander": "^12.1.0",
 		"ejs": "^3.1.10",
