@@ -4,7 +4,6 @@ import FormData from "form-data";
 import type { PathLike } from "node:fs";
 
 const default_client_id = "f0ea04148a54268";
-const imgur_api_url = "https://api.imgur.com/3/";
 
 export async function uploadFile(path: PathLike) {
 	const form = new FormData();
@@ -15,7 +14,7 @@ export async function uploadFile(path: PathLike) {
 	form.append("image", payload);
 
 	const options: type_option = {
-		url: imgur_api_url + "upload",
+		url: "https://api.imgur.com/3/upload",
 		method: "POST",
 		encoding: "utf8",
 		headers: { Authorization: `Client-ID ${default_client_id}` },
