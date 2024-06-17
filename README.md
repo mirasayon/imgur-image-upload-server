@@ -1,4 +1,4 @@
-# Simple image uploader Node.js Server which uploads image to <https://imgur.com> and returns imgur link of that image
+# Simple image uploader Node.js Server which uploads image to <https://imgur.com> and returns link of that image
 
 For .jpg, .png, .gif images
 
