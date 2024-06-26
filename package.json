@@ -9,7 +9,7 @@
 		"build": "npx tsc -p ./tsconfig.json",
 		"typedev": "npx tsc --watch -p ./tsconfig.json",
 		"start": "node --env-file=.env build/app.js",
-		"dev": "nodemon --env-file=.env build/app.js"
+		"dev": "npx nodemon --env-file=.env build/app.js"
 	},
 	"keywords": [
 		"imgur",
@@ -19,7 +19,6 @@
 	"license": "MIT",
 	"dependencies": {
 		"commander": "^12.1.0",
-		"ejs": "^3.1.10",
 		"express": "^4.19.2",
 		"express-fileupload": "^1.5.0",
 		"form-data": "^4.0.0",
