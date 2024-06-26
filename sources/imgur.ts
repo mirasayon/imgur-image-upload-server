@@ -16,7 +16,7 @@ export async function uploadFile(path: PathLike) {
 	const options: got.OptionsInit = {
 		url: "https://api.imgur.com/3/upload",
 		method: "POST",
-		encoding: "utf8",
+		encoding: "utf-8",
 		headers: { Authorization: `Client-ID ${default_client_id}` },
 		body: form,
 	};
@@ -26,12 +26,11 @@ export async function uploadFile(path: PathLike) {
 		throw new Error(statusMessage);
 	}
 
-	const res = JSON.parse(body).data as imgur_res;
-	console.info(JSON.parse(body).data);
-	return res;
+	const image_data = JSON.parse(body).data as imgur_res;
+	return image_data;
 }
 
-type imgur_res = {
+export type imgur_res = {
 	id: string;
 	deletehash: string;
 	account_id: null;
