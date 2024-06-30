@@ -1,23 +1,17 @@
 import * as got from "got";
-import { createReadStream } from "node:fs";
+import fs from "node:fs";
 import FormData from "form-data";
-import type { PathLike } from "node:fs";
+const anon_client_id = "f0ea04148a54268";
 
-const default_client_id = "f0ea04148a54268";
-
-export async function uploadFile(path: PathLike) {
+export async function uploadFile(path: fs.PathLike): Promise<imgur_res> {
 	const form = new FormData();
-	const payload = createReadStream(path);
-	if (!path) {
-		throw new Error("No file to upload");
-	}
+	const payload = fs.createReadStream(path);
 	form.append("image", payload);
-
 	const options: got.OptionsInit = {
 		url: "https://api.imgur.com/3/upload",
 		method: "POST",
 		encoding: "utf-8",
-		headers: { Authorization: `Client-ID ${default_client_id}` },
+		headers: { Authorization: `Client-ID ${anon_client_id}` },
 		body: form,
 	};
 	const { statusCode, statusMessage, body } = (await got.default(options)) as got.Response<string>;
@@ -25,7 +19,6 @@ export async function uploadFile(path: PathLike) {
 		console.error(`status code: ${statusCode}`);
 		throw new Error(statusMessage);
 	}
-
 	const image_data = JSON.parse(body).data as imgur_res;
 	return image_data;
 }
