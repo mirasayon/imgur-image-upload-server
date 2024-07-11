@@ -1,19 +1,12 @@
 import express from "express";
 import { uploadFile } from "./imgur.js";
 import fileUpload from "express-fileupload";
-import { mkdir, unlink, writeFile } from "fs/promises";
+import { unlink, writeFile } from "fs/promises";
 import { join } from "node:path";
-import { existsSync } from "node:fs";
-const work_path = process.cwd();
-const app = express();
-const temp_folder_path = join(work_path, "temp");
-if (!existsSync(temp_folder_path)) {
-	await mkdir(temp_folder_path);
-}
-app.use(fileUpload());
-const port = Number(process.env.PORT);
-const host = process.env.HOST!;
+import { hostname, portnumber, work_path } from "./configs.js";
 
+const app = express();
+app.use(fileUpload());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
@@ -32,4 +25,4 @@ app.post("/upload", async (req, reply) => {
 	return reply.status(202).json({ link: uploaded_image.link });
 });
 
-app.listen({ port: port, host: host }, () => console.info(`Server has been started: http://${host}:${port}/`));
+app.listen({ port: portnumber, host: hostname }, () => console.info(`Server has been started: http://${hostname}:${portnumber}/`));
